@@ -5,6 +5,44 @@ class LustObject(object):
   def handle(self, arguments): pass
   def print_help(self): pass
 
+class FactorialCommand(LustObject):
+  def handle(self, arguments):
+    try: argument = int(arguments[0])
+    except (ValueError, IndexError):
+      print("fact: could not read integer argument.")
+      return
+
+    if argument < 0:
+      print("fact: argument has to be non-negative!")
+      return
+
+    print(self.__calculate_factorial(argument))
+
+  def print_help(self):
+    print(" fact <integer>")
+    print("   Calculates the factorial of <integer>.")
+
+  def __calculate_factorial(self, argument):
+    # Hmmm...
+    result = 1
+    for i in range (1, argument+1):
+    	result *= i
+    return result
+
+class IsPrimeCommand(LustObject):
+	def handle(self, argument):
+		try: argument = int(arguments[0])
+		except (ValueError, IndexError):
+			print("fact: could not read integer argument.")
+			return
+		if argument<0:
+			print("pls non-negative")
+
+	printf(self.__calculate_IsPrimeCommand(argument))
+	
+
+
+
 class SquareCommand(LustObject):
   def handle(self, arguments):
     try: argument = int(arguments[0])
@@ -54,6 +92,7 @@ print("Enter 'help' for a list of commands. Press Ctrl-D or enter 'quit' to quit
 # dictionary for storing all commands
 commands = { }
 
+commands["fact"] = FactorialCommand()
 commands["square"] = SquareCommand()
 commands["quit"] = QuitCommand()
 # help command needs a reference to the parent dictionary in order to call each
