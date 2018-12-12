@@ -29,20 +29,6 @@ class FactorialCommand(LustObject):
     	result *= i
     return result
 
-class IsPrimeCommand(LustObject):
-	def handle(self, argument):
-		try: argument = int(arguments[0])
-		except (ValueError, IndexError):
-			print("fact: could not read integer argument.")
-			return
-		if argument<0:
-			print("pls non-negative")
-
-	printf(self.__calculate_IsPrimeCommand(argument))
-	
-
-
-
 class SquareCommand(LustObject):
   def handle(self, arguments):
     try: argument = int(arguments[0])
